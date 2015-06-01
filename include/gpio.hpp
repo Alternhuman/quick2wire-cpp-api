@@ -26,9 +26,9 @@ class GPIO{
 public:
 	GPIO();
 	void init();
+	PinBank *pins;	
 private:
 	int pi_revision;
-	PinBank *pins;	
 };
 
 
@@ -79,7 +79,7 @@ private:
     char* to_string();
     FILE *file = NULL;
 	int trigger;
-	char* direction;
+	char direction[3];
 	int soc_pin_number;
 	char * pull;
 	int index;

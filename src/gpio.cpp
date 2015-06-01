@@ -6,10 +6,9 @@ int gpio_admin(char * subcommand, int pin, char* pull){
 	//int len = strlen(subcommand) + strlen(itoa(pin)) + 1;
 	char command[MAX_LEN], buff[MAX_LEN];
 	
-	snprintf(command, MAX_LEN, "gpio-admin %s %d %s", subcommand, pin, pull == NULL ? "" : pull);
-
+	snprintf(command, MAX_LEN, "gpio-admin %s %d\n", subcommand, pin);//, pull == NULL ? "" : pull);
+	fprintf(stderr, command);
 	FILE* f = popen(command, "r");
-
 	return pclose(f);
 }
 
@@ -82,10 +81,10 @@ int Pin::init(PinBank *bank, int index, int soc_pin_number,char* direction, int 
  	//PinAPI::init(bank, index)
     this->bank = bank;
     this->index = index;
-	soc_pin_number = soc_pin_number;
-	direction = direction;
-	interrupt = interrupt;
-	pull = pull;
+    this->soc_pin_number = soc_pin_number;
+    strncpy(this->direction, direction, 3);
+//	this->interrupt = interrupt;
+//	this->pull = pull;
 }
 
 int Pin::get_soc_pin_number(){
@@ -158,10 +157,12 @@ int Pin::set(int value){
 	snprintf(buff, 20, "%d", value);
 	fputs(buff, this->file);
 	fflush(this->file);
+	return value;
 }
 
 bool Pin::closed(){
-	
+	if(this->file == NULL)
+		return false;
 	if(fseek(this->file, 0, SEEK_CUR) == -1){
 		if(errno == EBADF){
 			return true;
@@ -184,9 +185,16 @@ char* Pin::pin_path(char *filename){
 }
 
 void Pin::write(char*filename, char* value){
- 	FILE *f = fopen(filename, "w+");
+	fprintf(stderr, "%s\n", this->pin_path(filename));
+ 	FILE *f = fopen(this->pin_path(filename), "w+");
+	if(f == NULL)
+		fprintf(stderr, "Nope");
+	else
+		fprintf(stderr, "Yeah");
  	fputs(value, f);
  	fclose(f);
+	fprintf(stderr, "Returning\n");
+	return;
 }
 
 char *Pin::getDirection(){
@@ -194,8 +202,14 @@ char *Pin::getDirection(){
 }
 
 void Pin::setDirection(char* direction){
+
+	return;
 	this->write("direction", direction);
-	strncpy(this->direction, direction, 3);
+	return;
+	fprintf(stderr, "strncpy");
+//	strncpy(this->direction, direction, 3);
+	fprintf(stderr, "fin strncpy");
+	return;
 }
 
 Pin::Pin(){}
@@ -221,12 +235,7 @@ void Pin::setIndex(int value){
 
 
 Pin PinBank::at(int index){
-	if(0 < index < count){
-		throw std::exception();
-	}
-	else{
-		return this->pin(index);
-	}
+	return this->pin(index);
 }
 
 Pin PinBank::pin(int index){
