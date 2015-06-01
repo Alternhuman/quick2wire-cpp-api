@@ -26,9 +26,9 @@ class GPIO{
 public:
 	GPIO();
 	void init();
+	PinBank *pins;	
 private:
 	int pi_revision;
-	PinBank *pins;	
 };
 
 
