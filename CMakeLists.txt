@@ -8,14 +8,15 @@ SET(QUICK2WIRE_SRC
 )
 
 SET(DEMO_QUICK2WIRE_SRC
-	${CMAKE_SOURCE_DIR}/src/gpio.cpp
+	${CMAKE_SOURCE_DIR}/src/gpio.cpp	
 	${CMAKE_SOURCE_DIR}/src/board_revision.cpp
 	${CMAKE_SOURCE_DIR}/src/main.cpp
 )
 
 INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/include)
 
-
+SET(CMAKE_EXE_LINKER_FLAGS "-Wno-write-strings")
+add_definitions(${CMAKE_EXE_LINKER_FLAGS})
 #ADD_LIBRARY( quick2wire_c SHARED ${QUICK2WIRE_SRC})
 
 ADD_EXECUTABLE(quick2wire_demo ${DEMO_QUICK2WIRE_SRC})

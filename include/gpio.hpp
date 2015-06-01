@@ -1,35 +1,67 @@
+#ifndef _GPIO_HPP
+#define _GPIO_HPP
+
 #include <stdlib.h>
 #include <stdio.h>
+#include <exception>
+#include <string.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <map>
+
+#include "board_revision.hpp"
 
 #define OUT "out"
 #define IN "in"
 
+
 int gpio_admin(char * subcommand, int pin, char* pull=NULL);
 
-class PinAPI{
+class PinBank;
+class Pin;
+class GPIO;
+
+class GPIO{
 public:
-	PinAPI(int _bank, int _index);
-	int init(int bank, int index);
-	int enter();
-	int exit();
-
-	int getBank();
-	void setBank(int value);
-	int getIndex();
-	void setIndex(int value);
-	
-
+	GPIO();
+	void init();
 private:
-	int index;
-	int bank;
+	int pi_revision;
+	PinBank *pins;	
 };
 
-class Pin : public PinAPI{
+
+class PinBank{
+public:
+	PinBank();
+	Pin at(int index);
+	int write();
+	int read();
+	Pin pin(int index);
+	Pin init(int index);
+	bool has_len();
+	int length();
+
+private:
+	int index_to_soc(int index);
+	int count;
+	int by_revision(int v1, int v2);
+	int pi_revision;
+};
+
+class Pin{
 
 public:
 	Pin();
-	int init(int bank, int index, int soc_pin_number,char* direction=IN, int interrupt=0, int pull=0);
+	int init(PinBank *bank, int index, int soc_pin_number,char* direction=IN, int interrupt=0, int pull=0);
 	int get_soc_pin_number();
+	int enter();
+	int exit();
+	PinBank* getBank();
+	void setBank(PinBank *);
+	int getIndex();
+	void setIndex(int value);
 	int open();
 	int close();
 	int get();
@@ -50,4 +82,10 @@ private:
 	char* direction;
 	int soc_pin_number;
 	char * pull;
+	int index;
+	PinBank *bank;
 };
+
+
+
+#endif
