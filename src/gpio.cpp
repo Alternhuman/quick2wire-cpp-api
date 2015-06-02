@@ -6,7 +6,6 @@ int gpio_admin(char * subcommand, int pin, char* pull){
 	char command[MAX_LEN], buff[MAX_LEN];
 	
 	snprintf(command, MAX_LEN, "gpio-admin %s %d\n", subcommand, pin);//TODO, pull == NULL ? "" : pull);
-	fprintf(stderr, command);
 	FILE* f = popen(command, "r");
 	return pclose(f);
 }
@@ -135,7 +134,7 @@ int Pin::get(){
     */
 
     if(this->closed()){
-    	perror("The pin is closed")
+    	perror("The pin is closed");
     	return -1;
     }
     
@@ -155,7 +154,7 @@ int Pin::set(int value){
 		return -1;
 	}
 	if(strcmp(OUT, "out") != 0){
-		perror(stderr, "The direction is not \"out\"");
+		perror("The direction is not \"out\"");
 		return -2;
 	}
 	
@@ -255,13 +254,15 @@ Pin PinBank::at(int index){
 }
 
 Pin PinBank::pin(int index){
-	return Pin(index, this->index_to_soc(index));
+	Pin p = Pin();
+	p.init(this, index, this->index_to_soc(index));
+	return p;
 	return Pin();
 }
 
 
 Pin PinBank::init(int index){
-	Pin p =  Pin(index, this->index_to_soc(index));
+	Pin p =  Pin();
 	p.init(this, index, this->index_to_soc(index));
 	return p;
 }
