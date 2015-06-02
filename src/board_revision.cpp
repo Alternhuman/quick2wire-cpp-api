@@ -2,7 +2,10 @@
 
 #define CPUINFO_PATH "/proc/cpuinfo"
 
+#define PI_VERSION_1 1
+#define PI_VERSION_2 2
 int revision(){
+	//TODO: check ifstream error
 	std::ifstream f(CPUINFO_PATH);
 	std::string str;
 	std::string s("Revision");
