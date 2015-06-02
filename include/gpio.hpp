@@ -16,6 +16,17 @@
 #define OUT "out"
 #define IN "in"
 
+#define RISING = "rising"
+#define FALLING = "falling"
+#define BOTH = "both"
+    
+#define PULLDOWN = "pulldown"
+#define PULLUP = "pullup"
+
+#define BUTTON 0
+#define LED 1
+#define SPI_INTERRUPT 6
+#define I2C_INTERRUPT 7
 
 int gpio_admin(char * subcommand, int pin, char* pull=NULL);
 
@@ -26,6 +37,7 @@ class GPIO;
 class GPIO{
 public:
 	GPIO();
+	~GPIO();
 	PinBank *pins;
 	int pi_revision;
 };
@@ -71,9 +83,6 @@ public:
 	char* getDirection();
 	void setDirection(char* direction);
 
-	//int enter();
-	//int exit();
-	
 	/*interrupt, pull, fileno*/
 private:
 	int get();

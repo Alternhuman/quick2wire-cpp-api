@@ -7,6 +7,7 @@ int gpio_admin(char * subcommand, int pin, char* pull){
 	
 	snprintf(command, MAX_LEN, "gpio-admin %s %d\n", subcommand, pin);//TODO, pull == NULL ? "" : pull);
 	FILE* f = popen(command, "r");
+	
 	return pclose(f);
 }
 
@@ -15,6 +16,10 @@ int gpio_admin(char * subcommand, int pin, char* pull){
 GPIO::GPIO(){
 	pins = new PinBank();
 	pi_revision = revision();
+}
+
+GPIO::~GPIO(){
+	delete pins;
 }
 
 /*Class PinBank*/
@@ -53,6 +58,8 @@ PinBank::PinBank(){
 
 		count = sizeof(filter_pins)/sizeof(filter_pins[0]);
 
+	}else{
+		perror("Warning. You are not using a Raspberry Pi!");
 	}
 }
 
@@ -64,12 +71,6 @@ Pin PinBank::pin(int index){
 	Pin p = Pin(this, index, this->index_to_soc(index));
 	return p;
 }
-
-/*Pin PinBank::init(int index){
-	Pin p =  Pin();
-	p.init(this, index, this->index_to_soc(index));
-	return p;
-}*/
 
 bool PinBank::has_len(){
 	return count != 0;
@@ -90,7 +91,7 @@ int PinBank::by_revision(int v1, int v2){
 /*Pin class definitions*/
 
 Pin::Pin(PinBank *bank, int index, int soc_pin_number,char* direction, int interrupt, int pull){
- 	/*TODO: remove
+ 	/*
  	Creates a pin
  	 Parameters:
      user_pin_number -- the identity of the pin used to create the derived class.
@@ -109,8 +110,8 @@ Pin::Pin(PinBank *bank, int index, int soc_pin_number,char* direction, int inter
     this->index = index;
     this->soc_pin_number = soc_pin_number;
     strncpy(this->direction, direction, 3);
-//	this->interrupt = interrupt;
-//	this->pull = pull;
+	/*this->interrupt = interrupt;
+	this->pull = pull;*/
 }
 
 int Pin::open(){
