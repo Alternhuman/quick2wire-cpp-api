@@ -10,59 +10,91 @@ int gpio_admin(char * subcommand, int pin, char* pull){
 	return pclose(f);
 }
 
+/*Class GPIO*/
 
 GPIO::GPIO(){
 	pins = new PinBank();
+	pi_revision = revision();
 }
+
+/*Class PinBank*/
 
 PinBank::PinBank(){
 	pi_revision = revision();
 	if(pi_revision != 0){
 		std::map<int, int> _pi_header_1_pins;
 
-        _pi_header_1_pins[3] = by_revision(0, 2), 
-        _pi_header_1_pins[5] = by_revision(1, 3), 
-        _pi_header_1_pins[7] = 4; 
-        _pi_header_1_pins[8] = 14; 
-        _pi_header_1_pins[10] = 15; 
-        _pi_header_1_pins[11] = 17; 
-        _pi_header_1_pins[12] = 18; 
-        _pi_header_1_pins[13] = by_revision(21, 27); 
-        _pi_header_1_pins[15] = 22; 
-        _pi_header_1_pins[16] = 23; 
-        _pi_header_1_pins[18] = 24; 
-        _pi_header_1_pins[19] = 10; 
-        _pi_header_1_pins[21] = 9; 
-        _pi_header_1_pins[22] = 25; 
-        _pi_header_1_pins[23] = 11; 
-        _pi_header_1_pins[24] = 8;
-        _pi_header_1_pins[26] = 7;
-        //(\d+):[\ ]+(.*),?
+		_pi_header_1_pins[3] = by_revision(0, 2), 
+		_pi_header_1_pins[5] = by_revision(1, 3), 
+		_pi_header_1_pins[7] = 4; 
+		_pi_header_1_pins[8] = 14; 
+		_pi_header_1_pins[10] = 15; 
+		_pi_header_1_pins[11] = 17; 
+		_pi_header_1_pins[12] = 18; 
+		_pi_header_1_pins[13] = by_revision(21, 27); 
+		_pi_header_1_pins[15] = 22; 
+		_pi_header_1_pins[16] = 23; 
+		_pi_header_1_pins[18] = 24; 
+		_pi_header_1_pins[19] = 10; 
+		_pi_header_1_pins[21] = 9; 
+		_pi_header_1_pins[22] = 25; 
+		_pi_header_1_pins[23] = 11; 
+		_pi_header_1_pins[24] = 8;
+		_pi_header_1_pins[26] = 7;
 
-        _pi_gpio_pins = (int*) malloc(sizeof(int) * 8);
-        int filter_pins[] = {11, 12, 13, 15, 16, 18, 22, 7};
-	fprintf(stderr, "%d\n", sizeof(filter_pins)/sizeof(filter_pins[0]));
+		_pi_gpio_pins = (int*) malloc(sizeof(int) * 8);
+		
+		int filter_pins[] = {11, 12, 13, 15, 16, 18, 22, 7};
 
-        for (int i = 0; i < sizeof(filter_pins)/sizeof(filter_pins[0]); ++i)
-        {
-		//fprintf(stderr, "Loop");
-        	_pi_gpio_pins[i] = _pi_header_1_pins[filter_pins[i]];
-        }
+		for (int i = 0; i < sizeof(filter_pins)/sizeof(filter_pins[0]); i++)
+		{
+			_pi_gpio_pins[i] = _pi_header_1_pins[filter_pins[i]];
+		}
 
-        count = sizeof(filter_pins)/sizeof(filter_pins[0]);
+		count = sizeof(filter_pins)/sizeof(filter_pins[0]);
 
 	}
+}
+
+Pin PinBank::at(int index){
+	return this->pin(index);
+}
+
+Pin PinBank::pin(int index){
+	Pin p = Pin();
+	p.init(this, index, this->index_to_soc(index));
+
+	return p;
+}
+
+/*Pin PinBank::init(int index){
+	Pin p =  Pin();
+	p.init(this, index, this->index_to_soc(index));
+	return p;
+}*/
+
+bool PinBank::has_len(){
+	return count != 0;
+}
+
+int PinBank::length(){
+	return count;
+}
+
+int PinBank::index_to_soc(int index){
+	return _pi_gpio_pins[index];
 }
 
 int PinBank::by_revision(int v1, int v2){
  	return pi_revision == 1 ? v1 : v2;
 }
 
-
 /*Pin class definitions*/
 
+Pin::Pin(){}
+
 int Pin::init(PinBank *bank, int index, int soc_pin_number,char* direction, int interrupt, int pull){
- 	/*
+ 	/*TODO: remove
  	Creates a pin
  	 Parameters:
      user_pin_number -- the identity of the pin used to create the derived class.
@@ -82,13 +114,8 @@ int Pin::init(PinBank *bank, int index, int soc_pin_number,char* direction, int 
     this->soc_pin_number = soc_pin_number;
     strncpy(this->direction, direction, 3);
 //	this->interrupt = interrupt;
-//	this->pull = pull;
-  fprintf(stderr, "Created");  
+//	this->pull = pull;  
 	return 0;
-}
-
-int Pin::get_soc_pin_number(){
- 	return this->soc_pin_number;
 }
 
 int Pin::open(){
@@ -100,8 +127,8 @@ int Pin::open(){
  	this->write("direction", this->direction);
 
 	/*if self._direction == In:
-             self._write("edge", self._interrupt if self._interrupt is not None else "none")
-         */
+        self._write("edge", self._interrupt if self._interrupt is not None else "none")
+    */
 }
 
 int Pin::close(){
@@ -117,6 +144,28 @@ int Pin::close(){
 	}
 }
 
+bool Pin::closed(){
+	/*
+		Returns true if the pin is closed
+	*/
+	if(this->file == NULL)
+		return true;
+	
+	if(fseek(this->file, 0, SEEK_CUR) == -1){
+		if(errno == EBADF){
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
+int Pin::get_soc_pin_number(){
+ 	return this->soc_pin_number;
+}
+
+
 int Pin::getValue(){
 	return this->get();
 }
@@ -124,6 +173,34 @@ int Pin::getValue(){
 void Pin::setValue(int value){
 	this->set(value);
 }
+
+int Pin::getIndex(){
+	return this->index;
+}
+
+void Pin::setIndex(int value){
+	this->index = value;
+}
+
+PinBank* Pin::getBank(){
+	return this->bank;
+}
+
+void Pin::setBank(PinBank *value){
+	this->bank = value;
+}
+
+char *Pin::getDirection(){
+	return this->direction;
+}
+
+void Pin::setDirection(char* direction){
+
+	this->write("direction", direction);
+	strncpy(this->direction, direction, 3);
+	return;
+}
+
 
 int Pin::get(){
  	/*
@@ -170,20 +247,20 @@ int Pin::set(int value){
 	return value;
 }
 
-bool Pin::closed(){
+void Pin::write(char*filename, char* value){
 	/*
-		Returns true if the pin is closed
+	Writes value in the file pointed by filename.
+	The pin path is appended to filename.
 	*/
-	if(this->file == NULL)
-		return true;
+	FILE *f = fopen(this->pin_path(filename), "w+");
 	
-	if(fseek(this->file, 0, SEEK_CUR) == -1){
-		if(errno == EBADF){
-			return true;
-		}
-	}
+	if(f == NULL)
+		perror("Could not open the pin device");
 
-	return false;
+ 	fputs(value, f);
+ 	fclose(f);
+
+	return;
 }
 
 // /*Private methods*/
@@ -201,76 +278,18 @@ char* Pin::pin_path(char *filename){
  	return path;
 }
 
-void Pin::write(char*filename, char* value){
-	/*
-	Writes value in the file pointed by filename.
-	The pin path is appended to filename.
-	*/
-	//fprintf(stderr, "%s\n", this->pin_path(filename));
- 	FILE *f = fopen(this->pin_path(filename), "w+");
-	
-	if(f == NULL)
-		perror("Could not open the pin device");
-
- 	fputs(value, f);
- 	fclose(f);
-
-	return;
-}
-
-char *Pin::getDirection(){
-	return this->direction;
-}
-
-void Pin::setDirection(char* direction){
-
-	this->write("direction", direction);
-	fprintf(stderr, "strncpy");
-	strncpy(this->direction, direction, 3);
-	fprintf(stderr, "fin strncpy");
-	return;
-}
-
-Pin::Pin(){}
+char *Pin::to_string(){}
 
 
-PinBank* Pin::getBank(){
-	return this->bank;
-}
-
-void Pin::setBank(PinBank *value){
-	this->bank = value;
-}
-
-int Pin::getIndex(){
-	return this->index;
-}
-
-void Pin::setIndex(int value){
-	this->index = value;
-}
 
 
-Pin PinBank::at(int index){
-	fprintf(stderr, "At at");
-	return this->pin(index);
-}
-
-Pin PinBank::pin(int index){
-	Pin p = Pin();
-	fprintf(stderr, "The index is %d, the soc is %d", index, this->index_to_soc(index));
-	p.init(this, index, this->index_to_soc(index));
-
-	return p;
-}
 
 
-Pin PinBank::init(int index){
-	Pin p =  Pin();
-	p.init(this, index, this->index_to_soc(index));
-	return p;
-}
 
-int PinBank::index_to_soc(int index){
-	return _pi_gpio_pins[index];
-}
+
+
+
+
+
+
+

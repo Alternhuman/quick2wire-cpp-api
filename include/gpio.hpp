@@ -8,6 +8,7 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <unistd.h>
+
 #include <map>
 
 #include "board_revision.hpp"
@@ -25,9 +26,7 @@ class GPIO;
 class GPIO{
 public:
 	GPIO();
-	void init();
-	PinBank *pins;	
-private:
+	PinBank *pins;
 	int pi_revision;
 };
 
@@ -36,17 +35,16 @@ class PinBank{
 public:
 	PinBank();
 	Pin at(int index);
-	int write();
-	int read();
 	Pin pin(int index);
-	Pin init(int index);
+	//Pin init(int index);
 	bool has_len();
 	int length();
 
 private:
-	int index_to_soc(int index);
-	int count;
+	int index_to_soc(int index);	
 	int by_revision(int v1, int v2);
+
+	int count;
 	int pi_revision;
 	int *_pi_gpio_pins;
 };
@@ -56,28 +54,35 @@ class Pin{
 public:
 	Pin();
 	int init(PinBank *bank, int index, int soc_pin_number,char* direction=IN, int interrupt=0, int pull=0);
-	int get_soc_pin_number();
-	int enter();
-	int exit();
-	PinBank* getBank();
-	void setBank(PinBank *);
-	int getIndex();
-	void setIndex(int value);
 	int open();
 	int close();
-	int get();
-	int set(int value);
+	bool closed();
+
+	int get_soc_pin_number();
+	
 	int getValue();
 	void setValue(int value);
+	
+	int getIndex();
+	void setIndex(int value);
+
+	PinBank* getBank();
+	void setBank(PinBank *);
+	
 	char* getDirection();
 	void setDirection(char* direction);
-	bool closed();
+
+	//int enter();
+	//int exit();
+	
 	/*interrupt, pull, fileno*/
 private:
-	bool check_open();
+	int get();
+	int set(int value);
     void write(char* filename, char* value);
     char * pin_path(char *filename);
     char* to_string();
+    
     FILE *file = NULL;
 	int trigger;
 	char direction[3];
@@ -86,7 +91,5 @@ private:
 	int index;
 	PinBank *bank;
 };
-
-
 
 #endif
