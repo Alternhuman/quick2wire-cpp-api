@@ -61,9 +61,7 @@ Pin PinBank::at(int index){
 }
 
 Pin PinBank::pin(int index){
-	Pin p = Pin();
-	p.init(this, index, this->index_to_soc(index));
-
+	Pin p = Pin(this, index, this->index_to_soc(index));
 	return p;
 }
 
@@ -91,9 +89,7 @@ int PinBank::by_revision(int v1, int v2){
 
 /*Pin class definitions*/
 
-Pin::Pin(){}
-
-int Pin::init(PinBank *bank, int index, int soc_pin_number,char* direction, int interrupt, int pull){
+Pin::Pin(PinBank *bank, int index, int soc_pin_number,char* direction, int interrupt, int pull){
  	/*TODO: remove
  	Creates a pin
  	 Parameters:
@@ -114,8 +110,7 @@ int Pin::init(PinBank *bank, int index, int soc_pin_number,char* direction, int 
     this->soc_pin_number = soc_pin_number;
     strncpy(this->direction, direction, 3);
 //	this->interrupt = interrupt;
-//	this->pull = pull;  
-	return 0;
+//	this->pull = pull;
 }
 
 int Pin::open(){

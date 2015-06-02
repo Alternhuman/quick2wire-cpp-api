@@ -52,8 +52,7 @@ private:
 class Pin{
 
 public:
-	Pin();
-	int init(PinBank *bank, int index, int soc_pin_number,char* direction=IN, int interrupt=0, int pull=0);
+	Pin(PinBank *bank, int index, int soc_pin_number,char* direction=IN, int interrupt=0, int pull=0);
 	int open();
 	int close();
 	bool closed();
