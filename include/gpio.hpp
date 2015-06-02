@@ -78,7 +78,7 @@ public:
 private:
 	int get();
 	int set(int value);
-    void write(char* filename, char* value);
+    int write(char* filename, char* value);
     char * pin_path(char *filename);
     char* to_string();
     

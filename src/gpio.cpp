@@ -3,7 +3,7 @@
 #define MAX_LEN 300
 int gpio_admin(char * subcommand, int pin, char* pull){
 
-	char command[MAX_LEN], buff[MAX_LEN];
+	char command[MAX_LEN];
 	
 	snprintf(command, MAX_LEN, "gpio-admin %s %d\n", subcommand, pin);//TODO, pull == NULL ? "" : pull);
 	FILE* f = popen(command, "r");
@@ -46,7 +46,7 @@ PinBank::PinBank(){
 		
 		int filter_pins[] = {11, 12, 13, 15, 16, 18, 22, 7};
 
-		for (int i = 0; i < sizeof(filter_pins)/sizeof(filter_pins[0]); i++)
+		for (unsigned int i = 0; i < sizeof(filter_pins)/sizeof(filter_pins[0]); i++)
 		{
 			_pi_gpio_pins[i] = _pi_header_1_pins[filter_pins[i]];
 		}
@@ -119,7 +119,7 @@ int Pin::open(){
  		return 1;
 	}
 	
- 	this->write("direction", this->direction);
+ 	return this->write("direction", this->direction);
 
 	/*if self._direction == In:
         self._write("edge", self._interrupt if self._interrupt is not None else "none")
@@ -135,8 +135,9 @@ int Pin::close(){
 		this->file = NULL;
 		this->write("direction", IN);
 		this->write("edge", "none");
-		gpio_admin("unexport", this->soc_pin_number);
+		return gpio_admin("unexport", this->soc_pin_number);
 	}
+	return 0;
 }
 
 bool Pin::closed(){
@@ -242,20 +243,28 @@ int Pin::set(int value){
 	return value;
 }
 
-void Pin::write(char*filename, char* value){
+int Pin::write(char*filename, char* value){
 	/*
 	Writes value in the file pointed by filename.
 	The pin path is appended to filename.
 	*/
 	FILE *f = fopen(this->pin_path(filename), "w+");
 	
-	if(f == NULL)
+	if(f == NULL){
 		perror("Could not open the pin device");
+		return 1;
+	}
 
- 	fputs(value, f);
- 	fclose(f);
+ 	if(EOF == fputs(value, f)){
+ 		perror("Error during writing to pin device");
+ 		return 1;
+ 	}
+ 	
+ 	if(EOF == fclose(f)){
+ 		perror("Error during device closing");
+ 	}
 
-	return;
+	return 0;
 }
 
 // /*Private methods*/
@@ -273,18 +282,6 @@ char* Pin::pin_path(char *filename){
  	return path;
 }
 
-char *Pin::to_string(){}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+char *Pin::to_string(){
+	return NULL;
+}
