@@ -1,6 +1,5 @@
 CMakeCache.txt
 CMakeFiles
-Makefile
 cmake_install.cmake
 install_manifest.txt
 build/*
@@ -33,3 +32,13 @@ build/*
 *.exe
 *.out
 *.app
+
+# Doxygen
+
+documentation/doxygen/html/*
+documentation/doxygen/xml/*
+documentation/doxygen/latex/*
+
+#Sphinx
+
+documentation/sphinx/build/*
