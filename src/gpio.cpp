@@ -3,10 +3,9 @@
 #define MAX_LEN 300
 int gpio_admin(char * subcommand, int pin, char* pull){
 
-	//int len = strlen(subcommand) + strlen(itoa(pin)) + 1;
 	char command[MAX_LEN], buff[MAX_LEN];
 	
-	snprintf(command, MAX_LEN, "gpio-admin %s %d\n", subcommand, pin);//, pull == NULL ? "" : pull);
+	snprintf(command, MAX_LEN, "gpio-admin %s %d\n", subcommand, pin);//TODO, pull == NULL ? "" : pull);
 	fprintf(stderr, command);
 	FILE* f = popen(command, "r");
 	return pclose(f);
@@ -43,7 +42,7 @@ PinBank::PinBank(){
         _pi_header_1_pins[26] = 7;
         //(\d+):[\ ]+(.*),?
 
-        int * _pi_gpio_pins = (int*) malloc(sizeof(int) * 8);
+        _pi_gpio_pins = (int*) malloc(sizeof(int) * 8);
         int filter_pins[] = {11, 12, 13, 15, 16, 18, 22, 7};
 
         for (int i = 0; i < sizeof(filter_pins)/sizeof(filter_pins[0]); ++i)
@@ -126,18 +125,22 @@ void Pin::setValue(int value){
 }
 
 int Pin::get(){
- 	/*"""The current value of the pin: 1 if the pin is high or 0 if the pin is low.
+ 	/*
+ 	The current value of the pin: 1 if the pin is high or 0 if the pin is low.
         
-        The value can only be set if the pin's direction is Out.
+    The value can only be set if the pin's direction is Out.
         
-        Raises: 
-        IOError -- could not read or write the pin's value.
-        """*/
+    Raises: 
+    IOError -- could not read or write the pin's value.
+    */
 
     if(this->closed()){
+    	perror("The pin is closed")
     	return -1;
     }
+    
     fseek(this->file, 0, SEEK_SET);
+    
     char buff[10];
     if(NULL == fgets(buff, 10, this->file)){
     	return -1;
@@ -146,57 +149,71 @@ int Pin::get(){
 }
 
 int Pin::set(int value){
+	
 	if(this->closed()){
-		fprintf(stderr, "The dev is closed\n");
+		perror("The device is closed");
 		return -1;
 	}
 	if(strcmp(OUT, "out") != 0){
-		fprintf(stderr, "The direction is not out\n");
+		perror(stderr, "The direction is not \"out\"");
 		return -2;
 	}
+	
 	fseek(this->file, 0, SEEK_SET);
-	char buff[20];
-	snprintf(buff, 20, "%d", value);
+	
+	char buff[3];
+	snprintf(buff, 3, "%d", value);
 	fputs(buff, this->file);
 	fflush(this->file);
-	fprintf(stderr, "Successfully written\n");
+	
 	return value;
 }
 
 bool Pin::closed(){
+	/*
+		Returns true if the pin is closed
+	*/
 	if(this->file == NULL)
-		return false;
+		return true;
+	
 	if(fseek(this->file, 0, SEEK_CUR) == -1){
 		if(errno == EBADF){
 			return true;
 		}
 	}
 
-	return this->file == NULL;
- 	/*"""Returns if this pin is closed"""
-         return self._file is None or self._file.closed
-     */
+	return false;
 }
 
 // /*Private methods*/
 
 char* Pin::pin_path(char *filename){
+ 	
  	char *path = (char*)malloc(MAX_LEN * sizeof(char));
+
+ 	if(path == NULL){
+ 		perror("Error in memory allocation");
+ 		return NULL;
+ 	}
 
  	snprintf(path, MAX_LEN, "/sys/devices/soc/3f200000.gpio/gpio/gpio%d/%s", this->soc_pin_number, filename);
  	return path;
 }
 
 void Pin::write(char*filename, char* value){
-	fprintf(stderr, "%s\n", this->pin_path(filename));
+	/*
+	Writes value in the file pointed by filename.
+	The pin path is appended to filename.
+	*/
+	//fprintf(stderr, "%s\n", this->pin_path(filename));
  	FILE *f = fopen(this->pin_path(filename), "w+");
+	
 	if(f == NULL)
-		fprintf(stderr, "Nope");
-/*	else
-		fprintf(stderr, "Yeah");*/
+		perror("Could not open the pin device");
+
  	fputs(value, f);
  	fclose(f);
-	//fprintf(stderr, "Returning\n");
+
 	return;
 }
 
@@ -214,8 +231,6 @@ void Pin::setDirection(char* direction){
 }
 
 Pin::Pin(){}
-
-
 
 
 PinBank* Pin::getBank(){
@@ -240,16 +255,17 @@ Pin PinBank::at(int index){
 }
 
 Pin PinBank::pin(int index){
+	return Pin(index, this->index_to_soc(index));
 	return Pin();
 }
 
 
 Pin PinBank::init(int index){
-	Pin p =  Pin();
+	Pin p =  Pin(index, this->index_to_soc(index));
 	p.init(this, index, this->index_to_soc(index));
 	return p;
 }
 
 int PinBank::index_to_soc(int index){
-
+	return _pi_gpio_pins[index];
 }

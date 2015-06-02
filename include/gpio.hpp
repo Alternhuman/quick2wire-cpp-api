@@ -48,6 +48,7 @@ private:
 	int count;
 	int by_revision(int v1, int v2);
 	int pi_revision;
+	int *_pi_gpio_pins;
 };
 
 class Pin{
