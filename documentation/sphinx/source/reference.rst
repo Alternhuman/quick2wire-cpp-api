@@ -1,17 +1,9 @@
 API Reference
 =============
 
-.. doxygenclass:: Pin
-	:project: quick2wire
-	:members:
-	:private-members:
+.. toctree::
+   :maxdepth: 2
 
-.. doxygenclass:: PinBank
-	:project: quick2wire
-	:members:
-	:private-members:
-
-.. doxygenclass:: GPIO
-	:project: quick2wire
-	:members:
-	:private-members:
+   The Pin class <reference/pin>
+   The PinBank class <reference/pinbank>
+   The GPIO class <reference/gpio>
