@@ -3,11 +3,11 @@
 int main(int argc, char* argv[]){
 //	printf("%d\n", revision());
 	GPIO g;
-	Pin p = g.pins->at(3);
-	p.init(g.pins, 0, 4);
-/*	p.open();
+	Pin p = g.pins->at(27);
+	p.init(g.pins, 0, 27);
+	p.open();
 	p.setDirection(OUT);
-	p.setValue(1);*/
+	p.setValue(1);
 	return 0;
 }
 

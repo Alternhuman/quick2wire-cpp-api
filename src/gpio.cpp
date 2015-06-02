@@ -147,9 +147,11 @@ int Pin::get(){
 
 int Pin::set(int value){
 	if(this->closed()){
+		fprintf(stderr, "The dev is closed\n");
 		return -1;
 	}
 	if(strcmp(OUT, "out") != 0){
+		fprintf(stderr, "The direction is not out\n");
 		return -2;
 	}
 	fseek(this->file, 0, SEEK_SET);
@@ -157,6 +159,7 @@ int Pin::set(int value){
 	snprintf(buff, 20, "%d", value);
 	fputs(buff, this->file);
 	fflush(this->file);
+	fprintf(stderr, "Successfully written\n");
 	return value;
 }
 
@@ -189,11 +192,11 @@ void Pin::write(char*filename, char* value){
  	FILE *f = fopen(this->pin_path(filename), "w+");
 	if(f == NULL)
 		fprintf(stderr, "Nope");
-	else
-		fprintf(stderr, "Yeah");
+/*	else
+		fprintf(stderr, "Yeah");*/
  	fputs(value, f);
  	fclose(f);
-	fprintf(stderr, "Returning\n");
+	//fprintf(stderr, "Returning\n");
 	return;
 }
 
@@ -203,11 +206,9 @@ char *Pin::getDirection(){
 
 void Pin::setDirection(char* direction){
 
-	return;
 	this->write("direction", direction);
-	return;
 	fprintf(stderr, "strncpy");
-//	strncpy(this->direction, direction, 3);
+	strncpy(this->direction, direction, 3);
 	fprintf(stderr, "fin strncpy");
 	return;
 }
