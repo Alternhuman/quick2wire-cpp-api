@@ -73,7 +73,7 @@ Pin PinBank::pin(int index){
 }
 
 bool PinBank::has_len(){
-	return count != 0;
+	return count > 0;
 }
 
 int PinBank::length(){
@@ -91,19 +91,7 @@ int PinBank::by_revision(int v1, int v2){
 /*Pin class definitions*/
 
 Pin::Pin(PinBank *bank, int index, int soc_pin_number,char* direction, int interrupt, int pull){
- 	/*
- 	Creates a pin
- 	 Parameters:
-     user_pin_number -- the identity of the pin used to create the derived class.
-     soc_pin_number  -- the pin on the header to control, identified by the SoC pin number.
-     direction       -- (optional) the direction of the pin, either In or Out.
-     interrupt       -- (optional)
-     pull            -- (optional)
-    
-     Raises:
-     IOError        -- could not export the pin (if direction is given)
-    
- 	*/
+
 
  	//PinAPI::init(bank, index)
     this->bank = bank;
