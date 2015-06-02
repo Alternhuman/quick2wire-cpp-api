@@ -11,9 +11,7 @@ int gpio_admin(char * subcommand, int pin, char* pull){
 }
 
 
-GPIO::GPIO(){}
-
-void GPIO::init(){
+GPIO::GPIO(){
 	pins = new PinBank();
 }
 
@@ -43,9 +41,11 @@ PinBank::PinBank(){
 
         _pi_gpio_pins = (int*) malloc(sizeof(int) * 8);
         int filter_pins[] = {11, 12, 13, 15, 16, 18, 22, 7};
+	fprintf(stderr, "%d\n", sizeof(filter_pins)/sizeof(filter_pins[0]));
 
         for (int i = 0; i < sizeof(filter_pins)/sizeof(filter_pins[0]); ++i)
         {
+		//fprintf(stderr, "Loop");
         	_pi_gpio_pins[i] = _pi_header_1_pins[filter_pins[i]];
         }
 
@@ -83,6 +83,8 @@ int Pin::init(PinBank *bank, int index, int soc_pin_number,char* direction, int 
     strncpy(this->direction, direction, 3);
 //	this->interrupt = interrupt;
 //	this->pull = pull;
+  fprintf(stderr, "Created");  
+	return 0;
 }
 
 int Pin::get_soc_pin_number(){
@@ -250,14 +252,16 @@ void Pin::setIndex(int value){
 
 
 Pin PinBank::at(int index){
+	fprintf(stderr, "At at");
 	return this->pin(index);
 }
 
 Pin PinBank::pin(int index){
 	Pin p = Pin();
+	fprintf(stderr, "The index is %d, the soc is %d", index, this->index_to_soc(index));
 	p.init(this, index, this->index_to_soc(index));
+
 	return p;
-	return Pin();
 }
 
 
