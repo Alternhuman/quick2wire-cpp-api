@@ -1,10 +1,5 @@
 /**
     \file gpio.hpp
-    An overly extended example of how to use breathe
-*/
-
-/*!
-    With a little bit of a elaboration, should you feel it necessary.
 */
 
 #ifndef _GPIO_HPP

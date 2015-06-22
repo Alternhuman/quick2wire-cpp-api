@@ -6,9 +6,9 @@
 quick2wire-cpp-api
 ==================
 
-The quick2wire-cpp-api is a port of the `quick2wire-python-api <https://github.com/quick2wire/quick2wire-python-api>`_ written entirely in C/C++. It grants access to the GPIO ports to unprivileged users using the quick2wire `gpio-admin <https://github.com/quick2wire/quick2wire-gpio-admin>`_ tool.
+The quick2wire-cpp-api is a port of the `quick2wire-python-api <https://github.com/quick2wire/quick2wire-python-api>`_ written entirely in C/C++. It grants access to the GPIO ports to unprivileged users using the quick2wire `gpio-admin <https://github.com/quick2wire/quick2wire-gpio-admin>`_ tool (modified if used in **Arch Linux**).
 
-The library is a literal port of its parent project, so users of the Python implementation should feel comfortable with this variant too.
+The library is a literal port of its parent project, so users of the Python implementation should feel comfortable with this variant as well.
 
 This is a work in progress. So far, only the GPIO is implemented (and only the OUT mode), but a port of the whole API is on the way.
 
@@ -17,9 +17,10 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   Working principles <principles>
-   Class reference <reference>
-   Examples <examples>
+   principles
+   reference
+   examples
+   software_engineering/intro
 
 
 Indices and tables

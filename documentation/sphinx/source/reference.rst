@@ -7,3 +7,4 @@ API Reference
    The Pin class <reference/pin>
    The PinBank class <reference/pinbank>
    The GPIO class <reference/gpio>
+   reference/gpio-admin
