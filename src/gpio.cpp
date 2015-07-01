@@ -5,7 +5,7 @@ int gpio_admin(char * subcommand, int pin, char* pull){
 
 	char command[MAX_LEN];
 	
-	snprintf(command, MAX_LEN, "gpio-admin %s %d\n", subcommand, pin);//TODO, pull == NULL ? "" : pull);
+	snprintf(command, MAX_LEN, "gpio-admin %s %d\n", subcommand, pin);//, pull == NULL ? "" : pull);
 	FILE* f = popen(command, "r");
 	
 	return pclose(f);
@@ -92,8 +92,6 @@ int PinBank::by_revision(int v1, int v2){
 
 Pin::Pin(PinBank *bank, int index, int soc_pin_number,char* direction, int interrupt, int pull){
 
-
- 	//PinAPI::init(bank, index)
     this->bank = bank;
     this->index = index;
     this->soc_pin_number = soc_pin_number;
@@ -105,6 +103,7 @@ Pin::Pin(PinBank *bank, int index, int soc_pin_number,char* direction, int inter
 int Pin::open(){
  	gpio_admin("export", this->soc_pin_number, this->pull);
  	if(NULL == (this->file = fopen(this->pin_path("value"), "r+"))){
+ 		quick2wire_errno = PIN_ERR;
  		return 1;
 	}
 	

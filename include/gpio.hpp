@@ -32,7 +32,11 @@
 #define SPI_INTERRUPT 6
 #define I2C_INTERRUPT 7
 
+#define PIN_ERR 1
+
 int gpio_admin(char * subcommand, int pin, char* pull=NULL);
+
+extern int quick2wire_errno=0;
 
 class PinBank;
 class Pin;
@@ -122,13 +126,12 @@ public:
 	\param pull (optional)
 	\returns The initialized Pin.
 	*/
-	 
 	Pin(PinBank *bank, int index, int soc_pin_number,char* direction=IN, int interrupt=0, int pull=0);
 	
 	/*!
 	Exports the pin and opens the file descriptor for the pin value and sets its direction (IN/OUT).
 	\returns 0 if all the operations are successful. Otherwise, a perror message is thrown and the
-	quick2wire_errno variable is set. #TODO
+	quick2wire_errno variable is set to PIN_ERR.
 	*/
 	int open();
 

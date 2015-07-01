@@ -22,7 +22,6 @@ int main(int argc, char* argv[]){
 		fprintf(stdout, "Wrong sleep time value");
 		exit(2);
 	}
-//	fprintf(stdout, "%lf", sleep_time);
 
 	for (int i = 0; i < PIN_COUNT; ++i)
 	{
