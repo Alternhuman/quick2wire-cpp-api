@@ -31,6 +31,16 @@ Objetivos
 - **Estabilidad**: Estable 
 - **Comentarios**   
 
+**OBJ4** Independencia del *hardware*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    - **Descripción**: La biblioteca debe ser compatible con todas las versiones de la placa **Raspberry Pi**, detectando esta en tiempo de ejecución sin intervención del programador.
+    - **Importancia**: Alta
+    - **Urgencia**: Alta
+    - **Estado**: Completo
+    - **Estabilidad**: Estable
+    - **Comentarios**
+
 ..
     - **Descripción**: 
     - **Importancia**: 

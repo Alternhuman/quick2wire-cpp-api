@@ -7,3 +7,4 @@ En el presente apartado se recogen los diferentes aspectos de análisis y diseñ
     :maxdepth: 2
 
     analysis/intro
+    design/intro

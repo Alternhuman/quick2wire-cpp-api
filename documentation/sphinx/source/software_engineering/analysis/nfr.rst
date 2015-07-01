@@ -30,6 +30,26 @@ Requisitos no funcionales
 - **Estado**: Completo
 - **Estabilidad**: Alta
 - **Comentarios**: 
+  
+**NRF3**: Similitud
+-------------------
+
+- **Versión**: 
+- **Autores**: 
+- **Fuentes**: 
+- **Objetivos asociados**: 
+- **Requisitos asociados**: 
+- **Descripción**: A fin de facilitar el trabajo con la API a desarrolladores conocedores de la versión en Python, se conservarán las convenciones de nombres y secuencias de operación que esta utiliza, sin que esto impida aprovechar características de C++ no presentes en Python que se consideren beneficiosas.
+- **Importancia**: Media
+- **Urgencia**: Media
+- **Estado**: Completo
+- **Estabilidad**: Estable
+- **Comentarios**: 
+
+**NFR4**: Documentación
+-----------------------
+
+La API deberá incluir una documentación fácil de comprender por cualquier desarrollador con conocimientos de C++.
 
 ..
     - **Versión**: 
