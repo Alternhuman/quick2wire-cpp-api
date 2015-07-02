@@ -19,6 +19,7 @@ Contents:
 
    principles
    reference
+   usage
    examples
    software_engineering/intro
 
