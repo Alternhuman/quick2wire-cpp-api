@@ -16,5 +16,4 @@ El presente producto **software** no realiza una interacción directa con un usu
     static
     interaction
     states
-    activity
     

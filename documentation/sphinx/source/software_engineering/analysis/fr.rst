@@ -145,6 +145,14 @@ RF-6: Lectura del valor de un pin
 - **Estabilidad**
 - **Comentarios**
 
+Vista de casos de uso
+---------------------
+
+.. toctree::
+    :maxdepth: 2
+
+    uc
+
 .. 
     - **Versión**: 
     - **Autores**: 

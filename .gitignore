@@ -42,3 +42,5 @@ documentation/doxygen/latex/*
 #Sphinx
 
 documentation/sphinx/build/*
+documentation/sphinx/source/software_engineering/*.vpp~*
+documentation/sphinx/source/software_engineering/quick2wire-cpp-api.vpp.working

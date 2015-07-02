@@ -1,8 +1,8 @@
 Requisitos no funcionales
 =========================
 
-**NRF1**: CMake
----------------
+NFR1: CMake
+-----------
 
 - **Versión**: 
 - **Autores**: 
@@ -16,8 +16,8 @@ Requisitos no funcionales
 - **Estabilidad**: Alta
 - **Comentarios**: 
 
-**NRF2**: Biblioteca compartida
--------------------------------
+NFR2: Biblioteca compartida
+---------------------------
 
 - **Versión**: 
 - **Autores**: 
@@ -31,8 +31,8 @@ Requisitos no funcionales
 - **Estabilidad**: Alta
 - **Comentarios**: 
   
-**NRF3**: Similitud
--------------------
+NFR3: Similitud
+---------------
 
 - **Versión**: 
 - **Autores**: 
@@ -46,8 +46,8 @@ Requisitos no funcionales
 - **Estabilidad**: Estable
 - **Comentarios**: 
 
-**NFR4**: Documentación
------------------------
+NFR4: Documentación
+-------------------
 
 La API deberá incluir una documentación fácil de comprender por cualquier desarrollador con conocimientos de C++.
 
