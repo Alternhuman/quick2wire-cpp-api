@@ -7,8 +7,7 @@ Diseño
     scope
     data
     architecture
+    deployment
     static
     procedimental
     tests
-    components
-    deployment
