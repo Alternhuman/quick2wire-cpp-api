@@ -1,5 +1,5 @@
-Diseño
-======
+Fase de diseño
+==============
 
 .. toctree::
     :maxdepth: 2

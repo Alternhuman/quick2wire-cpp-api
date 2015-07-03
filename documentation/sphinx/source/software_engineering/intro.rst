@@ -8,3 +8,4 @@ En el presente apartado se recogen los diferentes aspectos de análisis y diseñ
 
     analysis/intro
     design/intro
+    project_mgmt/intro
