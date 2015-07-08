@@ -4,9 +4,9 @@ Requisitos funcionales
 RF-1: Comunicación con la biblioteca
 ------------------------------------
 
-- **Versión**: 
-- **Autores**: 
-- **Fuentes**: 
+- **Versión**: 1
+- **Autores**: Requisito marcado por la implementación original
+- **Fuentes**: Implementación original
 - **Objetivos asociados**: 
 - **Requisitos asociados**: 
 - **Descripción**: Siguiendo el mismo modelo de trabajo de la implementación original, la realización de las diferentes operaciones se realizará mediante llamadas al comando ``gpio-admin``.
@@ -17,21 +17,22 @@ RF-1: Comunicación con la biblioteca
     2. La biblioteca determina la identidad del usuario mediante el UID del proceso.
     3. Se realiza la operación solicitada y emite un mensaje de confirmación o fallo.
 - **Poscondición**: La operación es realizada.
-- **Excepciones**
-- **Rendimiento**
-- **Frecuencia**
-- **Importancia**
-- **Urgencia**
-- **Estado**
-- **Estabilidad**
-- **Comentarios**
+- **Excepciones**:
+
+    + En el caso de que la biblioteca retorne un error, comienza el caso de uso **RF-7**
+- **Rendimiento**: Alto
+- **Frecuencia**: Alta
+- **Importancia**: Media
+- **Urgencia**: Alta
+- **Estado**: Completo
+- **Estabilidad**: Estable
 
 RF-2: "Registro" de un pin
 --------------------------
 
-- **Versión**: 
-- **Autores**: 
-- **Fuentes**: 
+- **Versión**: 1
+- **Autores**: Requisito marcado por la implementación original
+- **Fuentes**: Implementación original
 - **Objetivos asociados**: 
 - **Requisitos asociados**: 
 - **Descripción**: La biblioteca considera que un pin debe ser "propiedad" de un usuario antes de poder utilizar el mismo, y a petición de un usuario verificará que el pin solicitado está libre u ocupado, reservándolo en el primer caso.
@@ -42,11 +43,11 @@ RF-2: "Registro" de un pin
     2. Se analiza el código de retorno de la llamada al sistema. En caso de que el pin se encuentre reservado, el caso de uso finaliza y el usuario es notificado. En caso de que el pin no se encuentre reservado, la biblioteca indica que el usuario solicitante es el nuevo propietario.
     3. La biblioteca notifica al usuario de que la reserva ha sido satisfactoria.
 - **Poscondición**: El usuario obtiene acceso al pin.
-- **Excepciones**
-- **Rendimiento**
+- **Excepciones**: No se plantean excepciones
+- **Rendimiento**: Alto
 - **Frecuencia**: Generalmente un usuario realizará una reserva en cada ejecución.
 - **Importancia**: Alta
-- **Urgencia**
+- **Urgencia**: Alta
 - **Estado**: Completo
 - **Estabilidad**: Estable
 - **Comentarios**
@@ -54,9 +55,9 @@ RF-2: "Registro" de un pin
 RF-3: "Liberación" de un pin
 ----------------------------
 
-- **Versión**: 
-- **Autores**: 
-- **Fuentes**: 
+- **Versión**: 1
+- **Autores**: Requisito marcado por la implementación original
+- **Fuentes**: Implementación original
 - **Objetivos asociados**: 
 - **Requisitos asociados**: 
 - **Descripción**: De la misma forma que un pin es reservado debe ser liberado al finalizar la ejecución, de forma que posteriores usuarios puedan utilizar el mismo.
@@ -67,20 +68,19 @@ RF-3: "Liberación" de un pin
     2. La aplicación es notificado del resultado de la operación.
 - **Poscondición**: El pin es liberado.
 - **Excepciones**: En caso de que se solicite la liberación de un pin no reservado, se notifica a la aplicación y el caso de uso finaliza.
-- **Rendimiento**
-- **Frecuencia**
-- **Importancia**
-- **Urgencia**
-- **Estado**
-- **Estabilidad**
-- **Comentarios**
+- **Rendimiento**: Alto
+- **Frecuencia**: Media
+- **Importancia**: Alta
+- **Urgencia**: Alta
+- **Estado**: Completo
+- **Estabilidad**: Estable
 
 RF-4: Modificación de la "dirección" del pin
 --------------------------------------------
 
-- **Versión**: 
-- **Autores**: 
-- **Fuentes**: 
+- **Versión**: 1
+- **Autores**: Requisito marcado por la implementación original
+- **Fuentes**: Implementación original
 - **Objetivos asociados**: 
 - **Requisitos asociados**: 
 - **Descripción**: La dirección del pin indica si se utilizará para recibir o enviar información. Todos los pines pueden operar en ambos modos.
@@ -96,14 +96,13 @@ RF-4: Modificación de la "dirección" del pin
 - **Urgencia**: Alta
 - **Estado**: Completo
 - **Estabilidad**: Estable
-- **Comentarios**
 
 RF-5: Modificación del valor de un pin
 --------------------------------------
 
-- **Versión**: 
-- **Autores**: 
-- **Fuentes**: 
+- **Versión**: 1
+- **Autores**: Requisito marcado por la implementación original
+- **Fuentes**: Implementación original
 - **Objetivos asociados**: 
 - **Requisitos asociados**: 
 - **Descripción**: En caso de que la dirección del pin sea de salida, el valor del pin podrá ser modificado (los valores de tensión admitidos con 0 y 5 voltios).
@@ -119,14 +118,13 @@ RF-5: Modificación del valor de un pin
 - **Urgencia**: Alta
 - **Estado**: Completo
 - **Estabilidad**: Estable
-- **Comentarios**
 
 RF-6: Lectura del valor de un pin
 ---------------------------------
 
-- **Versión**: 
-- **Autores**: 
-- **Fuentes**: 
+- **Versión**: 1
+- **Autores**: Requisito marcado por la implementación original
+- **Fuentes**: Implementación original
 - **Objetivos asociados**: 
 - **Requisitos asociados**: 
 - **Descripción**: En caso de que la dirección del pin sea de entrada, el valor (tensión) del pin podrá ser consultado (los valores de trabajo son 0 y 5 voltios).
@@ -142,8 +140,53 @@ RF-6: Lectura del valor de un pin
 - **Importancia**: Alta
 - **Urgencia**: Alta
 - **Estado**: No realizado
-- **Estabilidad**
-- **Comentarios**
+- **Estabilidad**: Estable
+  
+RF-7: Gestión de error
+----------------------
+
+- **Versión**: 1
+- **Autores**: Diego Martín
+- **Fuentes**: Análisis preliminar
+- **Objetivos asociados**: 
+- **Requisitos asociados**: 
+- **Descripción**: En el caso de que la biblioteca o la herramienta ``gpio-admin`` retornen un código de error no identificado, comienza este caso de uso.
+- **Precondición**: Se debe dar un error en la biblioteca o en ``gpio-admin``
+- **Secuencia normal**:
+
+    1. La biblioteca intenta identificar el error que se ha dado.
+    2. En caso de poder determinarlo envía un mensaje descriptivo a la aplicación. En caso contrario utilizará un mensaje genérico.
+- **Poscondición**: La aplicación es informada del error.
+- **Excepciones**: No se plantean excepciones
+- **Rendimiento**: Medio
+- **Frecuencia**: Baja
+- **Importancia**: Media
+- **Urgencia**: Media
+- **Estado**: Completo
+- **Estabilidad**: Estable
+
+RF-8: Interacción directa con ``gpio-admin``
+--------------------------------------------
+
+- **Versión**: 1
+- **Autores**: Diego Martín
+- **Fuentes**: Análisis preliminar
+- **Objetivos asociados**: 
+- **Requisitos asociados**: 
+- **Descripción**: La herramienta ``gpio-admin`` puede ser utilizada de forma directa por el usuario, de la misma forma que la biblioteca interactúa con ella.
+- **Precondición**: El usuario debe haber iniciado sesión en el sistema.
+- **Secuencia normal**:
+
+    1. El usuario ejecuta la herramienta, utilizando los parámetros de la línea de comandos para indicar la acción a realizar.
+    2. La biblioteca ejecuta la acción y muestra los resultados de éxito o error. 
+- **Poscondición**: La operación a ejecutar se ha llevado a cabo.
+- **Excepciones**: En caos de que se dé algún tipo de error, la biblioteca mostrará un mensaje informativo.
+- **Rendimiento**: Alto
+- **Frecuencia**: Alta
+- **Importancia**: Alta
+- **Urgencia**: Media
+- **Estado**: Completo
+- **Estabilidad**: Estable
 
 Vista de casos de uso
 ---------------------
