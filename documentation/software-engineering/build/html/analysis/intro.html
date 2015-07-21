@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Fase de análisis &mdash; documentación de quick2wire-ingeniería - 1</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="documentación de quick2wire-ingeniería - 1" href="../index.html"/>
+        <link rel="next" title="Dominio del problema" href="domain.html"/>
+        <link rel="prev" title="Indices and tables" href="../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> quick2wire-ingeniería</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Fase de análisis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="domain.html">Dominio del problema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html">Objetivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html">Actores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ir.html">Requisitos de información</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fr.html">Requisitos funcionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uc.html">Vista de paquetes de casos de uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nfr.html">Requisitos no funcionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static.html">Vista estática del producto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interaction.html">Vista de interacción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="states.html">Vista de máquina de estados</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/intro.html">Fase de diseño</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../design/scope.html">Ámbito</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/data.html">Diseño de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/architecture.html">Diseño arquitectónico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/deployment.html">Despliegue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/static.html">Vista estática del producto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/procedimental.html">Diseño procedimental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/tests.html">Pruebas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project_mgmt/intro.html">Gestión del proyecto</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">quick2wire-ingeniería</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>Fase de análisis</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/analysis/intro.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="fase-de-analisis">
+<h1>Fase de análisis<a class="headerlink" href="#fase-de-analisis" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>El presente producto <strong>software</strong> no realiza una interacción directa con un usuario humano, sino que en su lugar es integrada en otras aplicaciones que aprovechan su funcionalidad. Esta particular característica requiere la realización de una etapa de análisis atípica.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="domain.html">Dominio del problema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="goals.html">Objetivos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#obj1-control-de-los-pines-gpio-por-usuarios-no-privilegiados"><strong>OBJ1</strong>: Control de los pines GPIO por usuarios no privilegiados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#obj2-compatibilidad-con-c-y-c"><strong>OBJ2</strong> Compatibilidad con C y C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#obj3-gestion-de-permisos-y-propiedad"><strong>OBJ3</strong> Gestión de permisos y propiedad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html#obj4-independencia-del-hardware"><strong>OBJ4</strong> Independencia del <em>hardware</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="actors.html">Actores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actors.html#actor-1-aplicacion"><strong>Actor 1</strong>: Aplicación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html#actor-2-desarrollador"><strong>Actor 2</strong>: Desarrollador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html#diagrama-de-actores-del-sistema">Diagrama de actores del sistema</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ir.html">Requisitos de información</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ir.html#irq1-informacion-sobre-los-usuarios"><strong>IRQ1</strong> Información sobre los usuarios</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fr.html">Requisitos funcionales</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fr.html#rf-1-comunicacion-con-la-biblioteca">RF-1: Comunicación con la biblioteca</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fr.html#rf-2-registro-de-un-pin">RF-2: &#8220;Registro&#8221; de un pin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fr.html#rf-3-liberacion-de-un-pin">RF-3: &#8220;Liberación&#8221; de un pin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fr.html#rf-4-modificacion-de-la-direccion-del-pin">RF-4: Modificación de la &#8220;dirección&#8221; del pin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fr.html#rf-5-modificacion-del-valor-de-un-pin">RF-5: Modificación del valor de un pin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fr.html#rf-6-lectura-del-valor-de-un-pin">RF-6: Lectura del valor de un pin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fr.html#rf-7-gestion-de-error">RF-7: Gestión de error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fr.html#rf-8-interaccion-directa-con-gpio-admin">RF-8: Interacción directa con <code class="docutils literal"><span class="pre">gpio-admin</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fr.html#vista-de-casos-de-uso">Vista de casos de uso</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="uc.html">Vista de paquetes de casos de uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nfr.html">Requisitos no funcionales</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nfr.html#nfr1-cmake">NFR1: CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nfr.html#nfr2-biblioteca-compartida">NFR2: Biblioteca compartida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nfr.html#nfr3-similitud">NFR3: Similitud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nfr.html#nfr4-documentacion">NFR4: Documentación</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="static.html">Vista estática del producto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interaction.html">Vista de interacción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interaction.html#interaccion-con-un-pin">Interacción con un pin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="states.html">Vista de máquina de estados</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="domain.html" class="btn btn-neutral float-right" title="Dominio del problema">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral" title="Indices and tables"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Diego Martín.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

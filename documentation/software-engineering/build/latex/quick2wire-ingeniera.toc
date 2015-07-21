@@ -1,0 +1,48 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Dominio del problema}{3}{chapter.1}
+\contentsline {chapter}{\numberline {2}Objetivos}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}\textbf {OBJ1}: Control de los pines GPIO por usuarios no privilegiados}{5}{section.2.1}
+\contentsline {section}{\numberline {2.2}\textbf {OBJ2} Compatibilidad con C y C++}{5}{section.2.2}
+\contentsline {section}{\numberline {2.3}\textbf {OBJ3} Gesti\IeC {\'o}n de permisos y propiedad}{6}{section.2.3}
+\contentsline {section}{\numberline {2.4}\textbf {OBJ4} Independencia del \emph {hardware}}{6}{section.2.4}
+\contentsline {chapter}{\numberline {3}Actores}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}\textbf {Actor 1}: Aplicaci\IeC {\'o}n}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}\textbf {Actor 2}: Desarrollador}{7}{section.3.2}
+\contentsline {section}{\numberline {3.3}Diagrama de actores del sistema}{7}{section.3.3}
+\contentsline {chapter}{\numberline {4}Requisitos de informaci\IeC {\'o}n}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}\textbf {IRQ1} Informaci\IeC {\'o}n sobre los usuarios}{9}{section.4.1}
+\contentsline {chapter}{\numberline {5}Requisitos funcionales}{11}{chapter.5}
+\contentsline {section}{\numberline {5.1}RF-1: Comunicaci\IeC {\'o}n con la biblioteca}{11}{section.5.1}
+\contentsline {section}{\numberline {5.2}RF-2: ``Registro'' de un pin}{12}{section.5.2}
+\contentsline {section}{\numberline {5.3}RF-3: ``Liberaci\IeC {\'o}n'' de un pin}{12}{section.5.3}
+\contentsline {section}{\numberline {5.4}RF-4: Modificaci\IeC {\'o}n de la ``direcci\IeC {\'o}n'' del pin}{13}{section.5.4}
+\contentsline {section}{\numberline {5.5}RF-5: Modificaci\IeC {\'o}n del valor de un pin}{13}{section.5.5}
+\contentsline {section}{\numberline {5.6}RF-6: Lectura del valor de un pin}{14}{section.5.6}
+\contentsline {section}{\numberline {5.7}RF-7: Gesti\IeC {\'o}n de error}{15}{section.5.7}
+\contentsline {section}{\numberline {5.8}RF-8: Interacci\IeC {\'o}n directa con \texttt {gpio-admin}}{15}{section.5.8}
+\contentsline {section}{\numberline {5.9}Vista de casos de uso}{16}{section.5.9}
+\contentsline {subsection}{\numberline {5.9.1}Vista de paquetes de casos de uso}{16}{subsection.5.9.1}
+\contentsline {chapter}{\numberline {6}Vista de paquetes de casos de uso}{17}{chapter.6}
+\contentsline {chapter}{\numberline {7}Requisitos no funcionales}{19}{chapter.7}
+\contentsline {section}{\numberline {7.1}NFR1: CMake}{19}{section.7.1}
+\contentsline {section}{\numberline {7.2}NFR2: Biblioteca compartida}{19}{section.7.2}
+\contentsline {section}{\numberline {7.3}NFR3: Similitud}{20}{section.7.3}
+\contentsline {section}{\numberline {7.4}NFR4: Documentaci\IeC {\'o}n}{20}{section.7.4}
+\contentsline {chapter}{\numberline {8}Vista est\IeC {\'a}tica del producto}{21}{chapter.8}
+\contentsline {chapter}{\numberline {9}Vista de interacci\IeC {\'o}n}{23}{chapter.9}
+\contentsline {section}{\numberline {9.1}Interacci\IeC {\'o}n con un pin}{23}{section.9.1}
+\contentsline {chapter}{\numberline {10}Vista de m\IeC {\'a}quina de estados}{25}{chapter.10}
+\contentsline {chapter}{\numberline {11}Fase de dise\IeC {\~n}o}{27}{chapter.11}
+\contentsline {section}{\numberline {11.1}\IeC {\'A}mbito}{27}{section.11.1}
+\contentsline {section}{\numberline {11.2}Dise\IeC {\~n}o de datos}{27}{section.11.2}
+\contentsline {subsection}{\numberline {11.2.1}Objetos de datos}{27}{subsection.11.2.1}
+\contentsline {subsection}{\numberline {11.2.2}Estructuras de archivo}{27}{subsection.11.2.2}
+\contentsline {section}{\numberline {11.3}Dise\IeC {\~n}o arquitect\IeC {\'o}nico}{28}{section.11.3}
+\contentsline {section}{\numberline {11.4}Despliegue}{28}{section.11.4}
+\contentsline {section}{\numberline {11.5}Vista est\IeC {\'a}tica del producto}{29}{section.11.5}
+\contentsline {subsection}{\numberline {11.5.1}API}{29}{subsection.11.5.1}
+\contentsline {subsection}{\numberline {11.5.2}gpio-admin}{29}{subsection.11.5.2}
+\contentsline {section}{\numberline {11.6}Dise\IeC {\~n}o procedimental}{29}{section.11.6}
+\contentsline {section}{\numberline {11.7}Pruebas}{31}{section.11.7}
+\contentsline {chapter}{\numberline {12}Gesti\IeC {\'o}n del proyecto}{33}{chapter.12}
+\contentsline {chapter}{\numberline {13}Indices and tables}{35}{chapter.13}

@@ -1,0 +1,557 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Requisitos funcionales &mdash; documentación de quick2wire-ingeniería - 1</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="documentación de quick2wire-ingeniería - 1" href="../index.html"/>
+        <link rel="up" title="Fase de análisis" href="intro.html"/>
+        <link rel="next" title="Vista de paquetes de casos de uso" href="uc.html"/>
+        <link rel="prev" title="Requisitos de información" href="ir.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> quick2wire-ingeniería</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Fase de análisis</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="domain.html">Dominio del problema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html">Objetivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html">Actores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ir.html">Requisitos de información</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Requisitos funcionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uc.html">Vista de paquetes de casos de uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nfr.html">Requisitos no funcionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static.html">Vista estática del producto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interaction.html">Vista de interacción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="states.html">Vista de máquina de estados</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/intro.html">Fase de diseño</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../design/scope.html">Ámbito</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/data.html">Diseño de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/architecture.html">Diseño arquitectónico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/deployment.html">Despliegue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/static.html">Vista estática del producto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/procedimental.html">Diseño procedimental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/tests.html">Pruebas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project_mgmt/intro.html">Gestión del proyecto</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">quick2wire-ingeniería</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="intro.html">Fase de análisis</a> &raquo;</li>
+      
+    <li>Requisitos funcionales</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/analysis/fr.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="requisitos-funcionales">
+<h1>Requisitos funcionales<a class="headerlink" href="#requisitos-funcionales" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="rf-1-comunicacion-con-la-biblioteca">
+<h2>RF-1: Comunicación con la biblioteca<a class="headerlink" href="#rf-1-comunicacion-con-la-biblioteca" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Versión</strong>: 1</p>
+</li>
+<li><p class="first"><strong>Autores</strong>: Requisito marcado por la implementación original</p>
+</li>
+<li><p class="first"><strong>Fuentes</strong>: Implementación original</p>
+</li>
+<li><p class="first"><strong>Objetivos asociados</strong>: OBJ-1, OBJ-3</p>
+</li>
+<li><p class="first"><strong>Requisitos asociados</strong>: NFR-2</p>
+</li>
+<li><p class="first"><strong>Descripción</strong>: Siguiendo el mismo modelo de trabajo de la implementación original, la realización de las diferentes operaciones se realizará mediante llamadas al comando <code class="docutils literal"><span class="pre">gpio-admin</span></code>.</p>
+</li>
+<li><p class="first"><strong>Precondición</strong></p>
+</li>
+<li><p class="first"><strong>Secuencia normal</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>La implementación de la biblioteca solicita la realización de una tarea al comando, especificando los parámetros de la aplicación a través de los parámetros de entrada propios de una llamada al sistema (recogidos en el array <code class="docutils literal"><span class="pre">argv</span></code>).</li>
+<li>La biblioteca determina la identidad del usuario mediante el UID del proceso.</li>
+<li>Se realiza la operación solicitada y emite un mensaje de confirmación o fallo.</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Poscondición</strong>: La operación es realizada.</p>
+</li>
+<li><p class="first"><strong>Excepciones</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>En el caso de que la biblioteca retorne un error, comienza el caso de uso <strong>RF-7</strong></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Rendimiento</strong>: Alto</p>
+</li>
+<li><p class="first"><strong>Frecuencia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Importancia</strong>: Media</p>
+</li>
+<li><p class="first"><strong>Urgencia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Estado</strong>: Completo</p>
+</li>
+<li><p class="first"><strong>Estabilidad</strong>: Estable</p>
+</li>
+</ul>
+</div>
+<div class="section" id="rf-2-registro-de-un-pin">
+<h2>RF-2: &#8220;Registro&#8221; de un pin<a class="headerlink" href="#rf-2-registro-de-un-pin" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Versión</strong>: 1</p>
+</li>
+<li><p class="first"><strong>Autores</strong>: Requisito marcado por la implementación original</p>
+</li>
+<li><p class="first"><strong>Fuentes</strong>: Implementación original</p>
+</li>
+<li><p class="first"><strong>Objetivos asociados</strong>: OBJ-3</p>
+</li>
+<li><p class="first"><strong>Requisitos asociados</strong>: IRQ-1</p>
+</li>
+<li><p class="first"><strong>Descripción</strong>: La biblioteca considera que un pin debe ser &#8220;propiedad&#8221; de un usuario antes de poder utilizar el mismo, y a petición de un usuario verificará que el pin solicitado está libre u ocupado, reservándolo en el primer caso.</p>
+</li>
+<li><p class="first"><strong>Precondición</strong></p>
+</li>
+<li><p class="first"><strong>Secuencia normal</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>La aplicación solicita el registro de un pin para su uso a la biblioteca. Comienza el caso de uso RF-1.</li>
+<li>Se analiza el código de retorno de la llamada al sistema. En caso de que el pin se encuentre reservado, el caso de uso finaliza y el usuario es notificado. En caso de que el pin no se encuentre reservado, la biblioteca indica que el usuario solicitante es el nuevo propietario.</li>
+<li>La biblioteca notifica al usuario de que la reserva ha sido satisfactoria.</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Poscondición</strong>: El usuario obtiene acceso al pin.</p>
+</li>
+<li><p class="first"><strong>Excepciones</strong>: No se plantean excepciones</p>
+</li>
+<li><p class="first"><strong>Rendimiento</strong>: Alto</p>
+</li>
+<li><p class="first"><strong>Frecuencia</strong>: Generalmente un usuario realizará una reserva en cada ejecución.</p>
+</li>
+<li><p class="first"><strong>Importancia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Urgencia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Estado</strong>: Completo</p>
+</li>
+<li><p class="first"><strong>Estabilidad</strong>: Estable</p>
+</li>
+</ul>
+</div>
+<div class="section" id="rf-3-liberacion-de-un-pin">
+<h2>RF-3: &#8220;Liberación&#8221; de un pin<a class="headerlink" href="#rf-3-liberacion-de-un-pin" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Versión</strong>: 1</p>
+</li>
+<li><p class="first"><strong>Autores</strong>: Requisito marcado por la implementación original</p>
+</li>
+<li><p class="first"><strong>Fuentes</strong>: Implementación original</p>
+</li>
+<li><p class="first"><strong>Objetivos asociados</strong>: OBJ-1, OBJ-3</p>
+</li>
+<li><p class="first"><strong>Requisitos asociados</strong>: IRQ-1</p>
+</li>
+<li><p class="first"><strong>Descripción</strong>: De la misma forma que un pin es reservado debe ser liberado al finalizar la ejecución, de forma que posteriores usuarios puedan utilizar el mismo.</p>
+</li>
+<li><p class="first"><strong>Precondición</strong>: El pin debe estar reservado.</p>
+</li>
+<li><p class="first"><strong>Secuencia normal</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>La aplicación solicita la liberación del pin al comando <code class="docutils literal"><span class="pre">gpio-admin</span></code>. Comienza el caso de uso <em>RF-1</em></li>
+<li>La aplicación es notificado del resultado de la operación.</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Poscondición</strong>: El pin es liberado.</p>
+</li>
+<li><p class="first"><strong>Excepciones</strong>: En caso de que se solicite la liberación de un pin no reservado, se notifica a la aplicación y el caso de uso finaliza.</p>
+</li>
+<li><p class="first"><strong>Rendimiento</strong>: Alto</p>
+</li>
+<li><p class="first"><strong>Frecuencia</strong>: Media</p>
+</li>
+<li><p class="first"><strong>Importancia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Urgencia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Estado</strong>: Completo</p>
+</li>
+<li><p class="first"><strong>Estabilidad</strong>: Estable</p>
+</li>
+</ul>
+</div>
+<div class="section" id="rf-4-modificacion-de-la-direccion-del-pin">
+<h2>RF-4: Modificación de la &#8220;dirección&#8221; del pin<a class="headerlink" href="#rf-4-modificacion-de-la-direccion-del-pin" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Versión</strong>: 1</p>
+</li>
+<li><p class="first"><strong>Autores</strong>: Requisito marcado por la implementación original</p>
+</li>
+<li><p class="first"><strong>Fuentes</strong>: Implementación original</p>
+</li>
+<li><p class="first"><strong>Objetivos asociados</strong>: OBJ-1, OBJ-3</p>
+</li>
+<li><p class="first"><strong>Requisitos asociados</strong>: IRQ-1</p>
+</li>
+<li><p class="first"><strong>Descripción</strong>: La dirección del pin indica si se utilizará para recibir o enviar información. Todos los pines pueden operar en ambos modos.</p>
+</li>
+<li><p class="first"><strong>Precondición</strong>: El pin debe estar reservado previamente.</p>
+</li>
+<li><p class="first"><strong>Secuencia normal</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>La aplicación solicita modificar la dirección del pin al comando <code class="docutils literal"><span class="pre">gpio-admin</span></code>. Comienza el caso de uso <em>RF-1</em>.</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Poscondición</strong>: La dirección del pin es modificada.</p>
+</li>
+<li><p class="first"><strong>Excepciones</strong>: En caso de que se solicite la modificación de un pin no reservado, se notifica a la aplicación y el caso de uso finaliza.</p>
+</li>
+<li><p class="first"><strong>Rendimiento</strong></p>
+</li>
+<li><p class="first"><strong>Frecuencia</strong>: Se estima que durante cada ejecución se modificará la dirección del pin únicamente durante la fase de inicialización del mismo.</p>
+</li>
+<li><p class="first"><strong>Importancia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Urgencia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Estado</strong>: Completo</p>
+</li>
+<li><p class="first"><strong>Estabilidad</strong>: Estable</p>
+</li>
+</ul>
+</div>
+<div class="section" id="rf-5-modificacion-del-valor-de-un-pin">
+<h2>RF-5: Modificación del valor de un pin<a class="headerlink" href="#rf-5-modificacion-del-valor-de-un-pin" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Versión</strong>: 1</p>
+</li>
+<li><p class="first"><strong>Autores</strong>: Requisito marcado por la implementación original</p>
+</li>
+<li><p class="first"><strong>Fuentes</strong>: Implementación original</p>
+</li>
+<li><p class="first"><strong>Objetivos asociados</strong>: OBJ-1, OBJ-3</p>
+</li>
+<li><p class="first"><strong>Requisitos asociados</strong>: IRQ-1</p>
+</li>
+<li><p class="first"><strong>Descripción</strong>: En caso de que la dirección del pin sea de salida, el valor del pin podrá ser modificado (los valores de tensión admitidos con 0 y 5 voltios).</p>
+</li>
+<li><p class="first"><strong>Precondición</strong>: El pin debe estar reservado previamente.</p>
+</li>
+<li><p class="first"><strong>Secuencia normal</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>La aplicación solicita modificar el valor del pin al comando <code class="docutils literal"><span class="pre">gpio-admin</span></code>. Comienza el caso de uso <em>RF-1</em>.</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Poscondición</strong>: El valor del pin es modificado.</p>
+</li>
+<li><p class="first"><strong>Excepciones</strong>: En caso de que se solicite la modificación de un pin no reservado, se notifica a la aplicación y el caso de uso finaliza.</p>
+</li>
+<li><p class="first"><strong>Rendimiento</strong>:</p>
+</li>
+<li><p class="first"><strong>Frecuencia</strong>: El número de modificaciones que se realizarán en un programa se estima muy elevado, por lo que el rendimiento deberá ser alto.</p>
+</li>
+<li><p class="first"><strong>Importancia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Urgencia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Estado</strong>: Completo</p>
+</li>
+<li><p class="first"><strong>Estabilidad</strong>: Estable</p>
+</li>
+</ul>
+</div>
+<div class="section" id="rf-6-lectura-del-valor-de-un-pin">
+<h2>RF-6: Lectura del valor de un pin<a class="headerlink" href="#rf-6-lectura-del-valor-de-un-pin" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Versión</strong>: 1</p>
+</li>
+<li><p class="first"><strong>Autores</strong>: Requisito marcado por la implementación original</p>
+</li>
+<li><p class="first"><strong>Fuentes</strong>: Implementación original</p>
+</li>
+<li><p class="first"><strong>Objetivos asociados</strong>: OBJ-1, OBJ-3</p>
+</li>
+<li><p class="first"><strong>Requisitos asociados</strong>: IRQ-1</p>
+</li>
+<li><p class="first"><strong>Descripción</strong>: En caso de que la dirección del pin sea de entrada, el valor (tensión) del pin podrá ser consultado (los valores de trabajo son 0 y 5 voltios).</p>
+</li>
+<li><p class="first"><strong>Precondición</strong>: El pin debe estar reservado previamente.</p>
+</li>
+<li><p class="first"><strong>Secuencia normal</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>La aplicación solicita el valor del pin al comando <code class="docutils literal"><span class="pre">gpio-admin</span></code>. Comienza el caso de uso <em>RF-1</em>.</li>
+<li>Se retorna el valor del pin a la aplicación.</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Poscondición</strong>: La aplicación cuenta con el valor pin.</p>
+</li>
+<li><p class="first"><strong>Excepciones</strong>: En caso de que se solicite la lectura de un pin no reservado, se notifica a la aplicación y el caso de uso finaliza.</p>
+</li>
+<li><p class="first"><strong>Rendimiento</strong>:</p>
+</li>
+<li><p class="first"><strong>Frecuencia</strong>: El número de consultas que se realizarán en un programa se estima muy elevado, por lo que el rendimiento deberá ser alto.</p>
+</li>
+<li><p class="first"><strong>Importancia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Urgencia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Estado</strong>: No realizado</p>
+</li>
+<li><p class="first"><strong>Estabilidad</strong>: Estable</p>
+</li>
+</ul>
+</div>
+<div class="section" id="rf-7-gestion-de-error">
+<h2>RF-7: Gestión de error<a class="headerlink" href="#rf-7-gestion-de-error" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Versión</strong>: 1</p>
+</li>
+<li><p class="first"><strong>Autores</strong>: Diego Martín</p>
+</li>
+<li><p class="first"><strong>Fuentes</strong>: Análisis preliminar</p>
+</li>
+<li><p class="first"><strong>Objetivos asociados</strong>: OBJ-1, OBJ-3</p>
+</li>
+<li><p class="first"><strong>Requisitos asociados</strong>: NFR-3</p>
+</li>
+<li><p class="first"><strong>Descripción</strong>: En el caso de que la biblioteca o la herramienta <code class="docutils literal"><span class="pre">gpio-admin</span></code> retornen un código de error no identificado, comienza este caso de uso.</p>
+</li>
+<li><p class="first"><strong>Precondición</strong>: Se debe dar un error en la biblioteca o en <code class="docutils literal"><span class="pre">gpio-admin</span></code></p>
+</li>
+<li><p class="first"><strong>Secuencia normal</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>La biblioteca intenta identificar el error que se ha dado.</li>
+<li>En caso de poder determinarlo envía un mensaje descriptivo a la aplicación. En caso contrario utilizará un mensaje genérico.</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Poscondición</strong>: La aplicación es informada del error.</p>
+</li>
+<li><p class="first"><strong>Excepciones</strong>: No se plantean excepciones</p>
+</li>
+<li><p class="first"><strong>Rendimiento</strong>: Medio</p>
+</li>
+<li><p class="first"><strong>Frecuencia</strong>: Baja</p>
+</li>
+<li><p class="first"><strong>Importancia</strong>: Media</p>
+</li>
+<li><p class="first"><strong>Urgencia</strong>: Media</p>
+</li>
+<li><p class="first"><strong>Estado</strong>: Completo</p>
+</li>
+<li><p class="first"><strong>Estabilidad</strong>: Estable</p>
+</li>
+</ul>
+</div>
+<div class="section" id="rf-8-interaccion-directa-con-gpio-admin">
+<h2>RF-8: Interacción directa con <code class="docutils literal"><span class="pre">gpio-admin</span></code><a class="headerlink" href="#rf-8-interaccion-directa-con-gpio-admin" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Versión</strong>: 1</p>
+</li>
+<li><p class="first"><strong>Autores</strong>: Diego Martín</p>
+</li>
+<li><p class="first"><strong>Fuentes</strong>: Análisis preliminar</p>
+</li>
+<li><p class="first"><strong>Objetivos asociados</strong>: OBJ-1</p>
+</li>
+<li><p class="first"><strong>Requisitos asociados</strong>: IRQ-1</p>
+</li>
+<li><p class="first"><strong>Descripción</strong>: La herramienta <code class="docutils literal"><span class="pre">gpio-admin</span></code> puede ser utilizada de forma directa por el usuario, de la misma forma que la biblioteca interactúa con ella.</p>
+</li>
+<li><p class="first"><strong>Precondición</strong>: El usuario debe haber iniciado sesión en el sistema.</p>
+</li>
+<li><p class="first"><strong>Secuencia normal</strong>:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>El usuario ejecuta la herramienta, utilizando los parámetros de la línea de comandos para indicar la acción a realizar.</li>
+<li>La biblioteca ejecuta la acción y muestra los resultados de éxito o error.</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Poscondición</strong>: La operación a ejecutar se ha llevado a cabo.</p>
+</li>
+<li><p class="first"><strong>Excepciones</strong>: En caos de que se dé algún tipo de error, la biblioteca mostrará un mensaje informativo.</p>
+</li>
+<li><p class="first"><strong>Rendimiento</strong>: Alto</p>
+</li>
+<li><p class="first"><strong>Frecuencia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Importancia</strong>: Alta</p>
+</li>
+<li><p class="first"><strong>Urgencia</strong>: Media</p>
+</li>
+<li><p class="first"><strong>Estado</strong>: Completo</p>
+</li>
+<li><p class="first"><strong>Estabilidad</strong>: Estable</p>
+</li>
+</ul>
+</div>
+<div class="section" id="vista-de-casos-de-uso">
+<h2>Vista de casos de uso<a class="headerlink" href="#vista-de-casos-de-uso" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="uc.html">Vista de paquetes de casos de uso</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="uc.html" class="btn btn-neutral float-right" title="Vista de paquetes de casos de uso">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ir.html" class="btn btn-neutral" title="Requisitos de información"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Diego Martín.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Requisitos no funcionales &mdash; documentación de quick2wire-ingeniería - 1</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="documentación de quick2wire-ingeniería - 1" href="../index.html"/>
+        <link rel="up" title="Fase de análisis" href="intro.html"/>
+        <link rel="next" title="Vista estática del producto" href="static.html"/>
+        <link rel="prev" title="Vista de paquetes de casos de uso" href="uc.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html" class="fa fa-home"> quick2wire-ingeniería</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="intro.html">Fase de análisis</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="domain.html">Dominio del problema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goals.html">Objetivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actors.html">Actores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ir.html">Requisitos de información</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fr.html">Requisitos funcionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uc.html">Vista de paquetes de casos de uso</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Requisitos no funcionales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static.html">Vista estática del producto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interaction.html">Vista de interacción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="states.html">Vista de máquina de estados</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/intro.html">Fase de diseño</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../design/scope.html">Ámbito</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/data.html">Diseño de datos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/architecture.html">Diseño arquitectónico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/deployment.html">Despliegue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/static.html">Vista estática del producto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/procedimental.html">Diseño procedimental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../design/tests.html">Pruebas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../project_mgmt/intro.html">Gestión del proyecto</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">quick2wire-ingeniería</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="intro.html">Fase de análisis</a> &raquo;</li>
+      
+    <li>Requisitos no funcionales</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="../_sources/analysis/nfr.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="requisitos-no-funcionales">
+<h1>Requisitos no funcionales<a class="headerlink" href="#requisitos-no-funcionales" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="nfr1-cmake">
+<h2>NFR1: CMake<a class="headerlink" href="#nfr1-cmake" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><strong>Versión</strong>: 1</li>
+<li><strong>Autores</strong>: Diego Martín</li>
+<li><strong>Fuentes</strong>: Análisis preliminar</li>
+<li><strong>Objetivos asociados</strong>: OBJ-2</li>
+<li><strong>Descripción</strong>: Se utilizará CMake para la gestión de los diferentes procesos de compilación e instalación del <em>software</em>. Además se deberá crear un módulo de CMake que permita localizar la biblioteca creada al ser invocado.</li>
+<li><strong>Importancia</strong>: Media</li>
+<li><strong>Urgencia</strong>: Baja</li>
+<li><strong>Estado</strong>: Completo</li>
+<li><strong>Estabilidad</strong>: Alta</li>
+</ul>
+</div>
+<div class="section" id="nfr2-biblioteca-compartida">
+<h2>NFR2: Biblioteca compartida<a class="headerlink" href="#nfr2-biblioteca-compartida" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><strong>Versión</strong>: 1</li>
+<li><strong>Autores</strong>: Diego Martín</li>
+<li><strong>Fuentes</strong>: Análisis preliminar</li>
+<li><strong>Objetivos asociados</strong>: OBJ-2</li>
+<li><strong>Descripción</strong>: La inclusión de la biblioteca en el sistema debe realizarse en tiempo de ejecución mediante el su compilación como biblioteca compartida.</li>
+<li><strong>Importancia</strong>: Baja</li>
+<li><strong>Urgencia</strong>: Baja</li>
+<li><strong>Estado</strong>: Completo</li>
+<li><strong>Estabilidad</strong>: Alta</li>
+</ul>
+</div>
+<div class="section" id="nfr3-similitud">
+<h2>NFR3: Similitud<a class="headerlink" href="#nfr3-similitud" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><strong>Versión</strong>: 1</li>
+<li><strong>Autores</strong>: Diego Martín</li>
+<li><strong>Fuentes</strong>: Análisis preliminar</li>
+<li><strong>Descripción</strong>: A fin de facilitar el trabajo con la API a desarrolladores conocedores de la versión en Python, se conservarán las convenciones de nombres y secuencias de operación que esta utiliza, sin que esto impida aprovechar características de C++ no presentes en Python que se consideren beneficiosas.</li>
+<li><strong>Importancia</strong>: Media</li>
+<li><strong>Urgencia</strong>: Media</li>
+<li><strong>Estado</strong>: Completo</li>
+<li><strong>Estabilidad</strong>: Estable</li>
+</ul>
+</div>
+<div class="section" id="nfr4-documentacion">
+<h2>NFR4: Documentación<a class="headerlink" href="#nfr4-documentacion" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><strong>Versión</strong>: 1</li>
+<li><strong>Autores</strong>: Diego Martín</li>
+<li><strong>Fuentes</strong>: Análisis preliminar</li>
+<li><strong>Descripción</strong>: La API deberá incluir una documentación fácil de comprender por cualquier desarrollador con conocimientos de C++.</li>
+<li><strong>Importancia</strong>: Media</li>
+<li><strong>Urgencia</strong>: Media</li>
+<li><strong>Estado</strong>: Completo</li>
+<li><strong>Estabilidad</strong>: Estable</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="static.html" class="btn btn-neutral float-right" title="Vista estática del producto">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="uc.html" class="btn btn-neutral" title="Vista de paquetes de casos de uso"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Diego Martín.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

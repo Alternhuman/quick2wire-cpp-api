@@ -1,0 +1,6 @@
+Dominio del problema
+====================
+
+Actualmente la mayoría de *APIs* que posibilitan la manipulación del puerto GPIO presente en la Raspberry Pi requieren que el programa que aprovecha esta funcinalidad disponga de privilegios de superusuario. Esta restricción compromete la seguridad en el sistema a crear, que contará con un número de usuarios muy elevado y cuyas interacciones con el sistema no están controladas. Permitir el acceso al rol de superusuario a estos individuos supone un riesgo inaceptable (ejemplos son un error en un ejecutable creado por un usuario, que podría dañar el sistema de forma significativa o la posibilidad, si bien reducida, de un ataque intencionado).
+
+Se han analizado diferentes alternativas de terceros que satisfagan los requisitos de la biblioteca, entre las que figuran `RPi.GPIO <https://pypi.python.org/pypi/RPi.GPIO>`_ y `WiringPi <http://wiringpi.com/>`_, entre otras. La única alternativa viable es la biblioteca de `quick2wire <https://github.com/quick2wire/quick2wire-python-api>`_. Sin embargo, esta biblioteca únicamente cuenta con una versión en Python. La mayoría de las aplicaciones que aprovecharán el puerto GPIO serán programadas en C o C++, por lo que la integración del código Python no se considera una alternativa eficaz.
