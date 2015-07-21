@@ -49,8 +49,8 @@ PinBank::PinBank(){
 
 		_pi_gpio_pins = (int*) malloc(sizeof(int) * 8);
 		
-		int filter_pins[] = {11, 12, 13, 15, 16, 18, 22, 7};
-
+		//int filter_pins[] = {11, 12, 13, 15, 16, 18, 22, 7};
+		int filter_pins[] = {11, 13, 15, 19, 21, 23};
 		for (unsigned int i = 0; i < sizeof(filter_pins)/sizeof(filter_pins[0]); i++)
 		{
 			_pi_gpio_pins[i] = _pi_header_1_pins[filter_pins[i]];
@@ -266,7 +266,7 @@ char* Pin::pin_path(char *filename){
  		return NULL;
  	}
 
- 	snprintf(path, MAX_LEN, "/sys/devices/soc/3f200000.gpio/gpio/gpio%d/%s", this->soc_pin_number, filename);
+ 	snprintf(path, MAX_LEN, "/sys/class/gpio/gpio%d/%s", this->soc_pin_number, filename);
  	return path;
 }
 
